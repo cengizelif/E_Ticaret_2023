@@ -11,7 +11,8 @@ namespace E_Ticaret_2023.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Urunler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,9 +23,17 @@ namespace E_Ticaret_2023.Models
         }
     
         public int UrunId { get; set; }
+
+        [DisplayName("Ürün Adý")]
         public string UrunAdi { get; set; }
+
+        [DisplayName("Kategori")]
         public Nullable<int> KategoriId { get; set; }
+
+        [DisplayName("Açýklama")]
         public string UrunAciklamasi { get; set; }
+
+        [DisplayName("Fiyat")]
         public Nullable<int> UrunFiyati { get; set; }
     
         public virtual Kategoriler Kategoriler { get; set; }
