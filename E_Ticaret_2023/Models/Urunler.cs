@@ -12,6 +12,7 @@ namespace E_Ticaret_2023.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Urunler
     {
@@ -24,6 +25,7 @@ namespace E_Ticaret_2023.Models
     
         public int UrunId { get; set; }
 
+        [Required]
         [DisplayName("Ürün Adý")]
         public string UrunAdi { get; set; }
 
@@ -34,7 +36,7 @@ namespace E_Ticaret_2023.Models
         public string UrunAciklamasi { get; set; }
 
         [DisplayName("Fiyat")]
-        public Nullable<int> UrunFiyati { get; set; }
+        public int UrunFiyati { get; set; }
     
         public virtual Kategoriler Kategoriler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
