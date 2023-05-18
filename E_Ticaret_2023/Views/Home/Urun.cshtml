@@ -26,15 +26,17 @@
                     <img src="~/Resim/@(Model.UrunId).jpg" width="100" />
                 </div>
                 <div class="col-md-6">
-                    Ürün Fiyatı:<span style="font-size:14px;font-weight:bold;float:right">@Model.UrunFiyati TL</span>
+                    Ürün Fiyatı:<span style="font-size:14px;font-weight:bold">@Model.UrunFiyati TL</span>
                     @using (Html.BeginForm("SepeteEkle","Sepet"))
                     {
                         @Html.HiddenFor(x=>x.UrunId)
-                        <input type="number" name="adet" value="1" />
+                        <input type="number" name="adet" value="1" style="width:60px;" />
                         <input type="submit" id="sepetbtn" value="Sepete Ekle" />
                     }
-
                 </div>
+                <br /><br />
+                <h2>Ürün Açıklaması</h2>
+                <p>@Model.UrunAciklamasi</p>
             </div>
 
         </section>
