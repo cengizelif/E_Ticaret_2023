@@ -19,8 +19,7 @@ namespace E_Ticaret_2023.Controllers
             return View(sepet.ToList());
         }
         public ActionResult SepeteEkle(int UrunId, int adet) 
-        {      
-
+        {  
             string userId = User.Identity.GetUserId();
             Urunler urun = db.Urunler.Find(UrunId);
 
