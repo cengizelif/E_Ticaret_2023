@@ -75,7 +75,43 @@ namespace E_Ticaret_2023.Controllers
             return View();
         }
 
+        public ActionResult Tamamlandi()
+        {
+            string ad= Request.Form.Get("Ad");
+            string soyad = Request.Form.Get("Soyad");
+            string adres= Request.Form.Get("Adres");
+            string telefon= Request.Form.Get("Telefon");
+            string tcno= Request.Form.Get("TCKimlikNo");
+            string userID = User.Identity.GetUserId();
 
+            Siparis siparis=new Siparis() {  Ad=ad,Soyad=soyad, Adres=adres,Telefon=telefon,TCKimlikNo=tcno, Tarih=DateTime.Now,KullaniciId=userID}; 
+            
+            List<Sepet> sepettekiurunler=db.Sepet.Where(x=>x.KullaniciId==userID).ToList();
+
+            foreach (var item in sepettekiurunler)
+            {
+                SiparisDetay sd = new SiparisDetay()
+                {
+                    UrunId = item.UrunId,
+                    Adet = item.Adet,
+                    ToplamTutar = item.ToplamTutar
+                };
+                siparis.SiparisDetay.Add(sd);
+
+                db.Sepet.Remove(item);
+            }
+     
+            db.Siparis.Add(siparis);
+            db.SaveChanges();
+
+            return View();
+        }
+
+        public ActionResult Hatali()
+        {
+            ViewBag.hata = Request.Form;
+            return View();               
+        }
 
     }
 }

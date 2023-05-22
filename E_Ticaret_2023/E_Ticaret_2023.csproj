@@ -337,6 +337,8 @@
     <Content Include="Views\Home\Kategori.cshtml" />
     <Content Include="Views\Siparis\SiparisTamamla.cshtml" />
     <Content Include="Views\Siparis\Index.cshtml" />
+    <Content Include="Views\Siparis\Tamamlandi.cshtml" />
+    <Content Include="Views\Siparis\Hatali.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
