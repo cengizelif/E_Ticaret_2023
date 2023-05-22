@@ -10,7 +10,7 @@ namespace E_Ticaret_2023.Controllers
 {
     public class SiparisController : Controller
     {
-        // GET: Siparis
+        E_Ticaret_2023Entities db = new E_Ticaret_2023Entities();
         public ActionResult Index()
         {
             return View();
@@ -31,16 +31,16 @@ namespace E_Ticaret_2023.Controllers
 
             string userID = User.Identity.GetUserId();
 
-            List<Sepet> sepetUrunleri = db.Sepet.Where(x => x.KullaniciID == userID).ToList();
+            List<Sepet> sepetUrunleri = db.Sepet.Where(x => x.KullaniciId == userID).ToList();
 
             string ClientId = "1003001";//Bankanın verdiği magaza kodu
             string ToplamTutar = sepetUrunleri.Sum(x => x.ToplamTutar).ToString();
 
             string sipId = string.Format("{0:yyyyMMddHHmmss}", DateTime.Now);
 
-            string onayURL = "https://localhost:44371/Siparis/Tamamlandi";
+            string onayURL = "https://localhost:44374/Siparis/Tamamlandi";
 
-            string hataURL = "https://localhost:44371/Siparis/Hatali";
+            string hataURL = "https://localhost:44374/Siparis/Hatali";
 
             string RDN = "asdf";
             string StoreKey = "123456";
