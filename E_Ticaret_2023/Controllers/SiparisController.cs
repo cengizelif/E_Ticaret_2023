@@ -13,7 +13,7 @@ namespace E_Ticaret_2023.Controllers
         E_Ticaret_2023Entities db = new E_Ticaret_2023Entities();
         public ActionResult Index()
         {
-            return View();
+            return View(db.Siparis.ToList());
         }
         public ActionResult SiparisTamamla()
         {
