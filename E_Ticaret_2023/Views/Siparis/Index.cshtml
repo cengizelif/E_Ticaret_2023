@@ -4,11 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Siparişler</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -59,9 +57,9 @@
             @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SiparisId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SiparisId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SiparisId })
+
+            @Html.ActionLink("Detay", "Details", new { id=item.SiparisId }) 
+
         </td>
     </tr>
 }

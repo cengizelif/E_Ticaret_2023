@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static System.Net.WebRequestMethods;
 
 namespace E_Ticaret_2023.Controllers
 {
@@ -70,7 +71,8 @@ namespace E_Ticaret_2023.Controllers
             ViewBag.Lang = "tr";
             ViewBag.EMail = "cenelif@gmail.com";
             ViewBag.UserID = "ElifCengiz"; // bu id yi bankanın sanala pos ekranında biz oluşturuyoruz.
-            ViewBag.PostURL = "https://entegrasyon.asseco-see.com.tr/fim/est3Dgate";
+            ViewBag.PostURL = "https://localhost:44374/Siparis/Tamamlandi";
+                //"https://entegrasyon.asseco-see.com.tr/fim/est3Dgate";
 
             return View();
         }
