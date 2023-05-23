@@ -23,8 +23,15 @@
                     <li>@Html.ActionLink("Ana Sayfa", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Hakkında", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("İletişim", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Kategoriler", "Index", "Kategoriler", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Ürünler", "Index", "Urunler", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("admin"))
+                        {
+                            <li>@Html.ActionLink("Kategoriler", "Index", "Kategoriler", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Ürünler", "Index", "Urunler", new { area = "" }, new { @class = "nav-link" })</li>
+                        }
+                    }
+
                 </ul>
                  @Html.Partial("_LoginPartial")
             </div>

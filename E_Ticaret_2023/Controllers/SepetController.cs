@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace E_Ticaret_2023.Controllers
 {
+    [Authorize]
     public class SepetController : Controller
     {
         E_Ticaret_2023Entities db = new E_Ticaret_2023Entities();

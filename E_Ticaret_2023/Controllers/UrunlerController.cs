@@ -11,6 +11,7 @@ using E_Ticaret_2023.Models;
 
 namespace E_Ticaret_2023.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class UrunlerController : Controller
     {
         private E_Ticaret_2023Entities db = new E_Ticaret_2023Entities();

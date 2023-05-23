@@ -9,12 +9,21 @@ using static System.Net.WebRequestMethods;
 
 namespace E_Ticaret_2023.Controllers
 {
+    [Authorize]
     public class SiparisController : Controller
     {
         E_Ticaret_2023Entities db = new E_Ticaret_2023Entities();
         public ActionResult Index()
         {
-            return View(db.Siparis.ToList());
+            string userID = User.Identity.GetUserId();
+            return View(db.Siparis.Where(x=>x.KullaniciId==userID).ToList());
+        }
+
+        public ActionResult Details(int id)
+        {
+            var siparisdetay = db.SiparisDetay.Where(x => x.SiparisId == id);
+
+            return View(siparisdetay.ToList());
         }
         public ActionResult SiparisTamamla()
         {
