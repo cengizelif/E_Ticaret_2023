@@ -17,37 +17,46 @@ namespace WebApiKategoriler.Controllers
         private E_Ticaret_2023Entities db = new E_Ticaret_2023Entities();
 
         // GET: api/Kategori
-        public IQueryable<Kategoriler> GetKategoriler()
+        public List<Kategori> GetKategoriler()
         {
-            return db.Kategoriler;
+            List<Kategoriler> liste = db.Kategoriler.ToList();
+            List<Kategori> kategoriler = new List<Kategori>();
+
+            foreach (var item in liste)
+            {
+                kategoriler.Add(new Kategori() { KategoriId = item.KategoriId, KategoriAdi = item.KategoriAdi });
+            }
+
+            return kategoriler;
         }
 
         // GET: api/Kategori/5
-        [ResponseType(typeof(Kategoriler))]
+        [ResponseType(typeof(Kategori))]
         public IHttpActionResult GetKategoriler(int id)
-        {
+        {      
             Kategoriler kategoriler = db.Kategoriler.Find(id);
             if (kategoriler == null)
             {
                 return NotFound();
             }
+            Kategori kategori = new Kategori() { KategoriId = kategoriler.KategoriId, KategoriAdi = kategoriler.KategoriAdi };
 
-            return Ok(kategoriler);
+            return Ok(kategori);
         }
 
         // PUT: api/Kategori/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutKategoriler(int id, Kategoriler kategoriler)
+        public IHttpActionResult PutKategoriler(Kategoriler kategoriler)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != kategoriler.KategoriId)
-            {
-                return BadRequest();
-            }
+            //if (id != kategoriler.KategoriId)
+            //{
+            //    return BadRequest();
+            //}
 
             db.Entry(kategoriler).State = EntityState.Modified;
 
@@ -57,7 +66,7 @@ namespace WebApiKategoriler.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!KategorilerExists(id))
+                if (!KategorilerExists(kategoriler.KategoriId))
                 {
                     return NotFound();
                 }
@@ -82,7 +91,8 @@ namespace WebApiKategoriler.Controllers
             db.Kategoriler.Add(kategoriler);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = kategoriler.KategoriId }, kategoriler);
+            //return CreatedAtRoute("DefaultApi", new { id = kategoriler.KategoriId }, kategoriler);
+            return Ok();
         }
 
         // DELETE: api/Kategori/5

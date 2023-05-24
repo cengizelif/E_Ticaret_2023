@@ -26,7 +26,7 @@ namespace E_Ticaret_2023.Models
         public int UrunId { get; set; }
 
         [Required]
-        [DisplayName("Ürün Adý")]
+        [DisplayName("Ürün Adý"),StringLength(250)]
         public string UrunAdi { get; set; }
 
         [DisplayName("Kategori")]
